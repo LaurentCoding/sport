@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon suivi - Accueil{% endblock %}
+
+{% block body %}
+{% block header %}
+{% include 'partials/_header.html.twig' %}
+{% endblock %}
+<div class="container mt-4">
+  <div class="jumbotron">
+  <h1 class="display-4">Bienvenue sur Suivi-sport</h1>
+  <p class="lead">Suivi-sport est une application qui va te permettre d'enregistrer tes suivis sportif, est avoir des rendu visuel.</p>
+  <hr class="my-4">
+  <p>Pour commencer, rendez-vous sur la page d'inscription pour utiliser l'application.</p>
+  <a class="btn btn-primary btn-lg mt-4" href="#" role="button">Inscription</a>
+</div>
+</div>
+{% endblock %}
