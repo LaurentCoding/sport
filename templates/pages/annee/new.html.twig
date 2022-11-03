@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon suivi - Mes années{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+<h1 class="mt-4">Création des années</h1>
+
+{{ form_start(form) }}
+
+<div class="form-group">
+{{ form_label(form.year) }}
+{{ form_widget(form.year) }}
+
+
+  <div class="form-error">
+      {{ form_errors(form.year) }}
+    </div>
+      <div class="form-group">
+      {{ form_row(form.submit) }}
+      </div>
+      </div>
+      
+{{ form_end(form) }}
+
+
+</div>
+
+{% endblock %}

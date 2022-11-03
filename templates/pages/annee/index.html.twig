@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon suivi - Mes années{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+{% if not annees.items is same as([]) %}
+<h1>Les années</h1>
+
+<a  href="{{ path('annee.new') }}" class="btn btn-primary">Créer une année</a>
+
+
+ {% for message in app.flashes('success') %}
+  <div class="alert alert-success mt-4">
+    {{ message }}
+  </div>
+  {% endfor %}
+
+<div class="count mt-4">
+    <h4>Vous avez {{ annees.getTotalItemCount }} années de déclarées.</h4>
+</div>
+<table class="table table-hover mt-4">
+  <thead>
+    <tr class="table-active">
+      <th scope="col">Numéro</th>
+      <th scope="col">Année</th>
+      <th scope="col">Edition</th>
+      <th scope="col">Suppression</th>
+  </thead>
+  <tbody>
+   {% for annee in annees %}
+     <tr class="table-default">
+      <th scope="row">{{ annee.id }}</th>
+      <td>{{ annee.year }}</td>
+      <td><a class="btn btn-outline-info" href="{{ path('annee.edit' , { id: annee.id }) }}">Modifier</a></td>
+      <td><a class="btn btn-outline-warning" href="{{ path('annee.delete' , { id: annee.id }) }}">Supprimer</a></td>
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+<div class="navigation mt-4">
+    {{ knp_pagination_render(annees) }}
+</div>
+{% else %}
+    <h4>Il n' a pas d'années</h4>
+{% endif %}
+</div>
+{% endblock %}
