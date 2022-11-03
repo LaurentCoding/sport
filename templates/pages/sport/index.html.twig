@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon suivi - Mes sports{% endblock %}
+
+{% block body %}
+
+<div class="container mt-4">
+{% if not sports.items is same as([]) %}
+<h1>Mes sports</h1>
+
+<a  href="{{ path('sport.new') }}" class="btn btn-primary">Créer un sport</a>
+
+ {% for message in app.flashes('success') %}
+  <div class="alert alert-success mt-4">
+    {{ message }}
+  </div>
+  {% endfor %}
+
+<div class="count mt-4">
+    <h4>Vous avez {{ sports.getTotalItemCount }} sports de déclarés.</h4>
+</div>
+
+<table class="table table-hover mt-4">
+  <thead>
+    <tr class="table-active">
+      <th scope="col">Numéro</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Edition</th>
+      <th scope="col">Suppression</th>
+  </thead>
+  <tbody>
+   {% for sport in sports %}
+     <tr class="table-default">
+      <th scope="row">{{ sport.id }}</th>
+      <td>{{ sport.name }}</td>
+      <td><a class="btn btn-outline-info" href="{{ path('sport.edit' , { id: sport.id }) }}">Modifier</a></td>
+      <td><a class="btn btn-outline-warning" href="{{ path('sport.delete' , { id: sport.id }) }}">Supprimer</a></td>
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+<div class="navigation mt-4">
+    {{ knp_pagination_render(sports) }}
+</div>
+{% else %}
+    <h4>Il n'y a pas de sports</h4>
+{% endif %}
+</div>
+{% endblock %}

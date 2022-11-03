@@ -21,6 +21,7 @@ class SportRepository extends ServiceEntityRepository
         parent::__construct($registry, Sport::class);
     }
 
+
     public function save(Sport $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);

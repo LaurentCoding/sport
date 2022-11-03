@@ -4,10 +4,11 @@ namespace App\Entity;
 
 use App\Repository\SportRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: SportRepository::class)]
+#[UniqueEntity('name')]
 class Sport
 {
     #[ORM\Id]

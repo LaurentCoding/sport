@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon suivi - Mes sports{% endblock %}
+
+{% block body %}
+
+<div class="container mt-4">
+  <h1 class="mt-4">Modification d'un sport</h1>
+
+   {{ form_start(form) }}
+  
+    <div class="form-group">
+      {{ form_row(form.name) }}
+      
+    <div class="form-error">
+      {{ form_errors(form.name) }}
+
+    </div>
+    <div class="form-group">
+      {{ form_row(form.submit) }}
+      </div>
+    </div>
+ 
+  {{ form_end(form) }} 
+</div>
+{% endblock %}
